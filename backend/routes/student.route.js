@@ -27,6 +27,7 @@ router.get("/", async (req, res,next) => {
 });
 
 // UPDATE student
+
 router
 .route("/update-student/:id")
 .get((req, res,next) => {
@@ -42,7 +43,8 @@ router
 // 			})
 		
 // 			);
-studentSchema.findById({}).then(data => {
+studentSchema.findById(req.params.id).then(data => {
+
 	res.json(data)
 }).catch(err => {
 	next(err)
@@ -67,7 +69,7 @@ studentSchema.findById({}).then(data => {
 
 // 		})
 // 	);
-studentSchema.findByIdAndUpdate({}).then(data => {
+studentSchema.findByIdAndUpdate(req.params.id,{$set:req.body}).then(data => {
 	res.json(data)
 }).catch(err => {
 	next(err)
@@ -89,8 +91,10 @@ router.delete("/delete-student/:id",
 
 // })
 // )
-studentSchema.findByIdAndRemove({}).then(data => {
-	res.json(data)
+studentSchema.findByIdAndRemove(req.params.id).then(data => {
+	res.status(200).json({
+		msg: data,
+	})
 }).catch(err => {
 	next(err)
 })

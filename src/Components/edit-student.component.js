@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 const EditStudent = (props) => {
 	const params = useParams()
 	const id = params.id
+	// console.log('id',id)
 const [formValues, setFormValues] = useState({
 	name: "",
 	email: "",
@@ -22,7 +23,7 @@ const onSubmit = (studentObject) => {
 	.put(
 		"http://localhost:4000/students/update-student/" +
 		// props.match.params.id,
-		{id},
+		id,
 		studentObject
 	)
 	.then((res) => {
@@ -40,7 +41,7 @@ useEffect(() => {
 	.get(
 		"http://localhost:4000/students/update-student/"
 		// + props.match.params.id
-		+ {id}
+		+ id
 	)
 	.then((res) => {
 		const { name, email, rollno } = res.data;
