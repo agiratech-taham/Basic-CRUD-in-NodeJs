@@ -1,7 +1,8 @@
 import React from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { FormGroup,Form as BootstrapForm, FormControl, Button } from "react-bootstrap";
+import { FormGroup,Form as BootstrapForm, FormControl } from "react-bootstrap";
+import Button from "react-bootstrap/Button"
 
 const StudentForm = (props) => {
 const validationSchema = Yup.object().shape({
@@ -19,6 +20,7 @@ return (
 	<div className="form-wrapper">
 	<Formik {...props} validationSchema={validationSchema}>
 		<Form>
+		<BootstrapForm.Label htmlFor="inputPassword5">Name:</BootstrapForm.Label>
 		<FormGroup>
 			<Field name="name" type="text"
 				className="form-control" />
@@ -28,6 +30,7 @@ return (
 			component="span"
 			/>
 		</FormGroup>
+		<BootstrapForm.Label htmlFor="inputPassword5">Email:</BootstrapForm.Label>
 		<FormGroup>
 			<Field name="email" type="text"
 				className="form-control" />
@@ -37,6 +40,7 @@ return (
 			component="span"
 			/>
 		</FormGroup>
+		<BootstrapForm.Label htmlFor="inputPassword5">Role no:</BootstrapForm.Label>
 		<FormGroup>
 			<Field name="rollno" type="number"
 				className="form-control" />
@@ -46,7 +50,7 @@ return (
 			component="span"
 			/>
 		</FormGroup>
-		<Button variant="danger" size="lg"
+		<Button style={{marginTop:"1rem"}} variant="danger" size="sm"
 			block="block" type="submit">
 			{props.children}
 		</Button>
